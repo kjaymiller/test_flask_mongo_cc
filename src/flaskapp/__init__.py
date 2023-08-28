@@ -55,7 +55,8 @@ def create_app(test_config=None):
 
     app.register_blueprint(pages.bp)
 
-    engine.connect(host=app.config.get("DATABASE_URI"))
+    db = engine.connect(host=app.config.get("DATABASE_URI"))
+
     @app.cli.command("seed")
     @click.option("--filename", default="seed_data.json")
     def seed_data(filename):

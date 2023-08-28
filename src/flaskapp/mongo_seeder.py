@@ -2,9 +2,6 @@
 import json
 
 import models
-import mongoengine as engine
-
-from .config.development import DATABASE_URI
 
 pk_maps = {}
 
@@ -31,7 +28,7 @@ def seed_data(filename:str) -> None:
                 )
                     
                 for destination_id in entry["fields"]["destinations"]:
-                    models.Destination.objects.get(id=pk_maps[destination_id])
+                    destination = models.Destination.objects.get(id=pk_maps[destination_id])
                     cruise.destinations.append(destination)
 
                 cruise.save()

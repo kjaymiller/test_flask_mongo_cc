@@ -35,7 +35,7 @@ def destination_detail(pk: int):
 
 @bp.get("/cruise/<pk>")
 def cruise_detail(pk: int):
-    models.Cruise.objects.get(id=pk)
+    cruise = models.Cruise.objects.get(id=pk)
     return render_template("cruise_detail.html", cruise=cruise)
 
 
